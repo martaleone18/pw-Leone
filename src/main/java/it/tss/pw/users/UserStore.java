@@ -43,7 +43,8 @@ public class UserStore {
     
     public User update (User u){
         System.out.println("update user:" + u);
-        return users.put(u.getId(), u);
+        users.put(u.getId(), u);
+        return users.get(u.getId());
     }
 
     public void delete(Long id) {

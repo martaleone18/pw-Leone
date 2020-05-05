@@ -60,7 +60,7 @@ public class UsersResource {
     }
     
     @DELETE
-    @Path ("{id}/{nome}")
+    @Path ("{id}")
     public void delete (@PathParam ("id") Long id){
         store.delete(id);
     }
