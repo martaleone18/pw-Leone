@@ -8,6 +8,7 @@ package it.tss.pw.users;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -16,7 +17,8 @@ import javax.enterprise.context.ApplicationScoped;
  *
  * @author marta
  */
-@ApplicationScoped
+
+    @ApplicationScoped
 public class UserStore {
 
     private final Map <Long, User> users = new HashMap<>();
@@ -51,5 +53,18 @@ public class UserStore {
         System.out.println("delete user:" + id);
         users.remove(id);
     }
+     public Collection<User> search(String search) {
+        return users.values().stream()
+                .filter(v -> this.search(v, search)).collect(Collectors.toList());
+    }
+
+    private boolean search(User u, String search) {
+        return (u.getFirstName() != null && u.getFirstName().contains(search))
+                || (u.getLastName() != null && u.getLastName().contains(search))
+                || (u.getUsr() != null && u.getUsr().contains(search));
+    }
 
 }
+
+    
+

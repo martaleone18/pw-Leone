@@ -13,8 +13,8 @@ import java.util.Objects;
  *
  * @author marta
  */
-public class User implements Serializable{ 
-
+public class User implements Serializable {
+    
     private Long id;
     private String firstName;
     private String lastName;
@@ -108,7 +108,5 @@ public class User implements Serializable{
     public String toString() {
         return "User{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", usr=" + usr + ", pwd=" + pwd + ", birthDate=" + birthDate + '}';
     }
-    
-    
 
 }
