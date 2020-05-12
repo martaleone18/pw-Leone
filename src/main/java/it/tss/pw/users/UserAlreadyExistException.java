@@ -5,10 +5,22 @@
  */
 package it.tss.pw.users;
 
+import javax.ejb.EJBException;
 /**
  *
  * @author marta
  */
-public class UserAlreadyExistException {
+public class UserAlreadyExistException extends EJBException {
+
+    private final String username;
+
+    public UserAlreadyExistException(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     
 }

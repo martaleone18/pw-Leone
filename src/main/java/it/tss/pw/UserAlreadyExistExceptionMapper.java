@@ -6,10 +6,25 @@ package it.tss.pw;
  * and open the template in the editor.
  */
 
+
+import it.tss.pw.users.UserAlreadyExistException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
+
 /**
  *
  * @author marta
  */
-public class UserAlreadyExistExceptionMapper {
-    
+@Provider
+public class UserAlreadyExistExceptionMapper implements ExceptionMapper<UserAlreadyExistException> {
+
+    @Override
+    public Response toResponse(UserAlreadyExistException ex) {
+        return Response
+                .status(Response.Status.BAD_REQUEST)
+                .header("reason", "username " + ex.getUsername() + " already exist...")
+                .build();
+    }
+
 }
