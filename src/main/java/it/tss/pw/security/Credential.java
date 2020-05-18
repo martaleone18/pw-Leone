@@ -7,9 +7,10 @@ package it.tss.pw.security;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 /**
  *
- * @author marta
+ * @author alfonso
  */
 public class Credential implements Serializable {
 
