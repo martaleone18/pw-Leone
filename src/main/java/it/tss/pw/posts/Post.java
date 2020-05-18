@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "post")
 public class Post extends AbstractEntity {
-
+    
     @Column(name = "title", nullable = false)
     private String title;
 
