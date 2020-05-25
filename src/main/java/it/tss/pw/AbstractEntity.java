@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
+
 /**
  *
  * @author marta
@@ -24,12 +25,11 @@ public abstract class AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     @Column(name = "id")
     protected Long id;
 
     @Column(name = "created_on")
-    protected LocalDateTime createdOn;
+    protected LocalDateTime createdOn = LocalDateTime.now();
 
     @Column(name = "modified_on")
     protected LocalDateTime modifiedOn;

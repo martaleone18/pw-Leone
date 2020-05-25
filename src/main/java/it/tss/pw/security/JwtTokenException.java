@@ -7,7 +7,7 @@ package it.tss.pw.security;
 
 /**
  *
- * @author alfonso
+ * @author marta
  */
 public class JwtTokenException extends RuntimeException {
 

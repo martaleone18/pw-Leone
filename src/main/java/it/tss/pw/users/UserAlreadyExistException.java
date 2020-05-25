@@ -6,6 +6,7 @@
 package it.tss.pw.users;
 
 import javax.ejb.EJBException;
+
 /**
  *
  * @author marta

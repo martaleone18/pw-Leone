@@ -5,12 +5,14 @@
  */
 package it.tss.pw.users;
 
+
 import it.tss.pw.AbstractEntity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import javax.json.bind.annotation.JsonbDateFormat;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
@@ -22,11 +24,11 @@ import javax.validation.constraints.NotEmpty;
  *
  * @author marta
  */
-@NamedQueries({
+    @NamedQueries({
     @NamedQuery(name = User.FIND_ALL, query = "select e from User e order by e.lastName"),
     @NamedQuery(name = User.FIND_BY_USR_PWD, query = "select e from User e where e.usr= :usr and e.pwd= :pwd"),
     @NamedQuery(name = User.FIND_BY_USR, query = "select e from User e where e.usr= :usr"),
-    @NamedQuery(name = User.SEARCH, query = "select e from User e where e.firstName like :fname and e.lastName like :lname and e.usr like :usr")
+    @NamedQuery(name = User.SEARCH, query = "select e from User e where e.firstName like :fname or e.lastName like :lname or e.usr like :usr")
 })
 @Entity
 @Table(name = "user")
@@ -99,6 +101,7 @@ public class User extends AbstractEntity implements Serializable {
         this.usr = usr;
     }
 
+    @JsonbTransient
     public String getPwd() {
         return pwd;
     }
@@ -118,7 +121,7 @@ public class User extends AbstractEntity implements Serializable {
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", usr=" + usr + ", pwd=" + pwd + ", birthDate="
-                + birthDate == null ? "" : birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '}';
+                + birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '}';
     }
 
 }

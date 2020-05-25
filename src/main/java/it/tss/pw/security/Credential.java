@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author alfonso
+ * @author marta
  */
 public class Credential implements Serializable {
 

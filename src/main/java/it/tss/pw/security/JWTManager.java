@@ -26,7 +26,7 @@ import org.eclipse.microprofile.jwt.Claims;
 
 /**
  *
- * @author alfonso
+ * @author marta
  */
 public class JWTManager {
 
