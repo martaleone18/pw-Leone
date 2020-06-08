@@ -69,7 +69,7 @@ public class AuthenticationResource {
         System.out.println("------------ generated token -------------------");
         System.out.println(result);
         System.out.println("------------ curl command for test -------------");
-        System.out.println("curl -v -i -H'Authorization: Bearer " + result + "' http://localhost:8080/projectwork/resources/users");
+        System.out.println("curl -v -i -H'Authorization: Bearer " + result + "' http://localhost:8080/pw-Leone/resources/users");
         return result;
     }
 }

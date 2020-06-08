@@ -7,6 +7,7 @@ package it.tss.pw.users;
 
 
 import it.tss.pw.security.Credential;
+import it.tss.pw.security.SecurityEncoding;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -49,6 +50,7 @@ public class UserStore {
         if (findByUsr(u.getUsr()).isPresent()) {
             throw new UserAlreadyExistException(u.getUsr());
         }
+        u.setPwd(SecurityEncoding.shaHash(u.getPwd()));
         return em.merge(u);
     }
 
@@ -76,6 +78,7 @@ public class UserStore {
     }
 
     public Optional<User> search(Credential credential) {
+        credential.setPwd(SecurityEncoding.shaHash(credential.getPwd()));
         try {
             User found = em.createNamedQuery(User.FIND_BY_USR_PWD, User.class)
                     .setParameter("usr", credential.getUsr())

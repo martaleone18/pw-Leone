@@ -31,7 +31,7 @@ import org.eclipse.microprofile.jwt.Claims;
 public class JWTManager {
 
     private static final String PRIVATE_KEY = "privateKey.pem";
-    private static final String ISS = "it.tss.projectwork";
+    private static final String ISS = "it.tss.pw";
 
     public String generate(User usr) {
 
